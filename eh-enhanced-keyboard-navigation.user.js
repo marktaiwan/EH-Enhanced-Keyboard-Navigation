@@ -5,8 +5,8 @@
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
-// @homepageURL  https://github.com/marktaiwan/
-// @supportURL   https://github.com/marktaiwan/
+// @homepageURL  https://github.com/marktaiwan/EH-Enhanced-Keyboard-Navigation
+// @supportURL   https://github.com/marktaiwan/EH-Enhanced-Keyboard-Navigation/issues
 // @match        https://e-hentai.org/*
 // @match        https://exhentai.org/*
 // @grant        GM_addStyle
