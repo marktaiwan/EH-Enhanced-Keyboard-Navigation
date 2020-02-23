@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EH Enhanced Keyboard Navigation
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.0.3
+// @version      1.0.4
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -10,6 +10,7 @@
 // @match        https://e-hentai.org/*
 // @match        https://exhentai.org/*
 // @grant        GM_addStyle
+// @grant        GM_openInTab
 // @grant        unsafeWindow
 // ==/UserScript==
 
@@ -104,6 +105,7 @@ const presets = {
     toggleTagSelect:   [{key: 'KeyT'}],
     openSelected:      [{key: 'KeyE'}],
     openInNewTab:      [{key: 'KeyE', shift: true}],
+    // OpenInBackground:  [],
     prev:              [{key: 'KeyZ'}],
     next:              [{key: 'KeyX'}],
     reloadImage:       [{key: 'KeyR'}],
@@ -248,6 +250,20 @@ const actions = {
         if (selection) {
           const anchor = $('a', selection);
           window.open(anchor.href, '_blank');
+        }
+      }
+    }
+  },
+  OpenInBackground: {
+    name: 'Open selected in background tab',
+    fn: () => {
+      if (unsafeWindow.selected_link) {
+        GM_openInTab(unsafeWindow.selected_link.href, {active: false});
+      } else {
+        const selection = $('.highlighted');
+        if (selection) {
+          const anchor = $('a', selection);
+          GM_openInTab(anchor.href, {active: false});
         }
       }
     }
