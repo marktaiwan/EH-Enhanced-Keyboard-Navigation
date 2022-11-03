@@ -271,28 +271,34 @@ const actions = {
   prev: {
     name: 'Previous page',
     fn: () => {
-      const page = getPageType();
-      if (page == 'index') {
-        click('.searchnav > div:nth-child(3) > a, .ptt td:first-child');
-        // NOTE: remove '.ptt td:first-child' in the future
-      } else if (page !== 'slide') {
-        click('.ptt td:first-child');
-      } else {
+      switch (getPageType()) {
+        case 'index':
+          click('.searchnav > div:nth-child(3) > a, .ptt td:nth-child(1)');
+          // NOTE: remove '.ptt td:nth-child(1)' in the future
+          break;
+        case 'gallery':
+          click('.ptt td:nth-child(1)');
+          break;
+        case 'slide':
         click('#prev');
+          break;
       }
     }
   },
   next: {
     name: 'Next page',
     fn: () => {
-      const page = getPageType();
-      if (page == 'index') {
-        click('.searchnav > div:nth-child(4) > a, .ptt td:last-child');
-        // NOTE: remove '.ptt td:last-child' in the future
-      } else if (page !== 'slide') {
-        click('.ptt td:last-child');
-      } else {
+      switch (getPageType()) {
+        case 'index':
+          click('.searchnav > div:nth-child(4) > a, .ptt td:nth-last-child(1)');
+          // NOTE: remove '.ptt td:nth-last-child(1)' in the future
+          break;
+        case 'gallery':
+          click('.ptt td:nth-last-child(1)');
+          break;
+        case 'slide':
         click('#next');
+          break;
       }
     }
   },
