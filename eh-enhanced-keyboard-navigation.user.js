@@ -271,7 +271,11 @@ const actions = {
   prev: {
     name: 'Previous page',
     fn: () => {
-      if (getPageType() !== 'slide') {
+      const page = getPageType();
+      if (page == 'index') {
+        click('.searchnav > div:nth-child(3) > a, .ptt td:first-child');
+        // NOTE: remove '.ptt td:first-child' in the future
+      } else if (page !== 'slide') {
         click('.ptt td:first-child');
       } else {
         click('#prev');
@@ -281,7 +285,11 @@ const actions = {
   next: {
     name: 'Next page',
     fn: () => {
-      if (getPageType() !== 'slide') {
+      const page = getPageType();
+      if (page == 'index') {
+        click('.searchnav > div:nth-child(4) > a, .ptt td:last-child');
+        // NOTE: remove '.ptt td:last-child' in the future
+      } else if (page !== 'slide') {
         click('.ptt td:last-child');
       } else {
         click('#next');
