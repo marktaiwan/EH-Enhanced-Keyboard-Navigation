@@ -552,8 +552,8 @@ function getPageType() {
 
 function getIndexLayout() {
   // Determine the index layout mode
-  const option = $('#dms option[selected]');
-  if (option) return option.value;
+  return $('.searchnav  div:last-child option[selected]')?.value || $('#dms option[selected]')?.value;
+  // TODO: #dms selector due to be phased out, remove in the future.
 }
 
 function highlight(selection, setSmooth = true) {
