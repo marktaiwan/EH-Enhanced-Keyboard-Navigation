@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EH Enhanced Keyboard Navigation
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.0.6
+// @version      1.1.0
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
