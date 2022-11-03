@@ -108,6 +108,8 @@ const presets = {
     // OpenInBackground:  [],
     prev:              [{key: 'KeyZ'}],
     next:              [{key: 'KeyX'}],
+    first:             [{key: 'KeyZ', shift: true}],
+    last:              [{key: 'KeyX', shift: true}],
     reloadImage:       [{key: 'KeyR'}],
     toGallery:         [{key: 'KeyG'}],
     focusSearch:       [{key: 'KeyS', shift: true}],
@@ -280,7 +282,7 @@ const actions = {
           click('.ptt td:nth-child(1)');
           break;
         case 'slide':
-        click('#prev');
+          click('#prev');
           break;
       }
     }
@@ -297,7 +299,39 @@ const actions = {
           click('.ptt td:nth-last-child(1)');
           break;
         case 'slide':
-        click('#next');
+          click('#next');
+          break;
+      }
+    }
+  },
+  first: {
+    name: 'First page',
+    fn: () => {
+      switch (getPageType()) {
+        case 'index':
+          click('.searchnav > div:nth-child(2) > a, .ptt td:nth-child(2)');
+          break;
+        case 'gallery':
+          click('.ptt td:nth-child(2)');
+          break;
+        case 'slide':
+          click('.sn a:first-child');
+          break;
+      }
+    }
+  },
+  last: {
+    name: 'Last page',
+    fn: () => {
+      switch (getPageType()) {
+        case 'index':
+          click('.searchnav > div:nth-child(5) > a, .ptt td:nth-last-child(2)');
+          break;
+        case 'gallery':
+          click('.ptt td:nth-last-child(2)');
+          break;
+        case 'slide':
+          click('.sn a:last-child');
           break;
       }
     }
