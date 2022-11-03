@@ -105,7 +105,7 @@ const presets = {
     toggleTagSelect:   [{key: 'KeyT'}],
     openSelected:      [{key: 'KeyE'}],
     openInNewTab:      [{key: 'KeyE', shift: true}],
-    // OpenInBackground:  [],
+    OpenInBackground:  [],
     prev:              [{key: 'KeyZ'}],
     next:              [{key: 'KeyX'}],
     first:             [{key: 'KeyZ', shift: true}],
