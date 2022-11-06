@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EH Enhanced Keyboard Navigation
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.1.0
+// @version      1.1.1
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -292,7 +292,7 @@ const actions = {
     fn: () => {
       switch (getPageType()) {
         case 'index':
-          click('.searchnav > div:nth-child(4) > a, .ptt td:nth-last-child(1)');
+          click('.searchnav > div:nth-last-child(3) > a, .ptt td:nth-last-child(1)');
           // NOTE: remove '.ptt td:nth-last-child(1)' in the future
           break;
         case 'gallery':
