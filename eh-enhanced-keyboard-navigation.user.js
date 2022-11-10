@@ -105,7 +105,7 @@ const presets = {
     toggleTagSelect:   [{key: 'KeyT'}],
     openSelected:      [{key: 'KeyE'}],
     openInNewTab:      [{key: 'KeyE', shift: true}],
-    OpenInBackground:  [],
+    openInBackground:  [],
     prev:              [{key: 'KeyZ'}],
     next:              [{key: 'KeyX'}],
     first:             [{key: 'KeyZ', shift: true}],
@@ -256,7 +256,7 @@ const actions = {
       }
     }
   },
-  OpenInBackground: {
+  openInBackground: {
     name: 'Open selected in background tab',
     fn: () => {
       if (unsafeWindow.selected_link) {
