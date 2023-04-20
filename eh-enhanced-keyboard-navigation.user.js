@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EH Enhanced Keyboard Navigation
 // @description  Configurable shortcuts and enhanced keyboard navigation. "Ctrl+Shift+/" to open settings.
-// @version      1.1.2
+// @version      1.1.3
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -588,7 +588,7 @@ function getFirstVisibleOrClosest(selector) {
 
 function getPageType() {
   // Determine if the current page is index, gallery, or image slide
-  const indexReg = new RegExp('^https?://(exhentai|e-hentai)\\.org(/((doujinshi|manga|artistcg|gamecg|western|non-h|imageset|cosplay|asianporn|misc|tag/[\\w\\+:-]+)(/\\d+)?/?|(popular|watched|favorites\\.php|uploader/.+))?(\\?.*)?)?$');
+  const indexReg = new RegExp('^https?://(exhentai|e-hentai)\\.org(/((doujinshi|manga|artistcg|gamecg|western|non-h|imageset|cosplay|asianporn|misc|tag/[\\w\\+:\\-\\.]+)(/\\d+)?/?|(popular|watched|favorites\\.php|uploader/.+))?(\\?.*)?)?$');
   const galleryReg = new RegExp('^https?://(exhentai|e-hentai)\\.org/g/\\d+/\\w+/(\\?p=\\d+)?$');
   const slideReg = new RegExp('^https?://(exhentai|e-hentai)\\.org/s/\\w+/\\w+-\\d+(\\?nl=.+)?$');
   const href = window.location.href;
