@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EH Enhanced Keyboard Navigation
 // @description  Configurable shortcuts and enhanced keyboard navigation. "Ctrl+Shift+/" to open settings.
-// @version      1.1.3
+// @version      1.1.4
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -218,8 +218,8 @@ const actions = {
   toggleTagSelect: {
     name: 'Toggle tag selection',
     fn: () => {
-      if (unsafeWindow.selected_tag) {
-        unsafeWindow.toggle_tagmenu(undefined, undefined);
+      if (unsafeWindow.selected_tagname) {
+        unsafeWindow.toggle_tagmenu();
       } else {
         unhighlight($('.highlighted'));
         document.activeElement.blur();
@@ -234,7 +234,7 @@ const actions = {
   openSelected: {
     name: 'Open selected',
     fn: () => {
-      if (unsafeWindow.selected_link) {
+      if (unsafeWindow.selected_tagelem) {
         unsafeWindow.tag_show_galleries();
       } else {
         const selection = $('.highlighted');
@@ -245,8 +245,8 @@ const actions = {
   openInNewTab: {
     name: 'Open selected in new tab',
     fn: () => {
-      if (unsafeWindow.selected_link) {
-        window.open(unsafeWindow.selected_link.href, '_blank');
+      if (unsafeWindow.selected_tagelem) {
+        window.open(unsafeWindow.selected_tagelem.href, '_blank');
       } else {
         const selection = $('.highlighted');
         if (selection) {
@@ -259,8 +259,8 @@ const actions = {
   openInBackground: {
     name: 'Open selected in background tab',
     fn: () => {
-      if (unsafeWindow.selected_link) {
-        GM_openInTab(unsafeWindow.selected_link.href, {active: false});
+      if (unsafeWindow.selected_tagelem) {
+        GM_openInTab(unsafeWindow.selected_tagelem.href, {active: false});
       } else {
         const selection = $('.highlighted');
         if (selection) {
@@ -382,19 +382,19 @@ const actions = {
   showTagDef: {
     name: 'Show tag definition',
     fn: () => {
-      if (unsafeWindow.selected_tag) unsafeWindow.tag_define();
+      if (unsafeWindow.selected_tagname) unsafeWindow.tag_define();
     }
   },
   tagUpvote: {
     name: 'Tag: Vote up',
     fn: () => {
-      if (unsafeWindow.selected_tag) unsafeWindow.tag_vote_up();
+      if (unsafeWindow.selected_tagname) unsafeWindow.tag_vote_up();
     }
   },
   tagDownvote: {
     name: 'Tag: Vote down',
     fn: () => {
-      if (unsafeWindow.selected_tag) unsafeWindow.tag_vote_down();
+      if (unsafeWindow.selected_tagname) unsafeWindow.tag_vote_down();
     }
   },
   usePreset_1: {
@@ -609,7 +609,7 @@ function highlight(selection, setSmooth = true) {
 
   // Undo existing selection
   unhighlight($('.highlighted'));
-  if (unsafeWindow.selected_tag) unsafeWindow.toggle_tagmenu(undefined, undefined);
+  if (unsafeWindow.selected_tagname) unsafeWindow.toggle_tagmenu();
 
   if (selection.matches(TAG_SELECTOR)) {
     // Tag selection
@@ -650,7 +650,7 @@ function unhighlight(ele) {
 
 function scroll(direction, event) {
   const type = event.type;
-  const highlighted = $('.highlighted') || unsafeWindow.selected_link;
+  const highlighted = $('.highlighted') || unsafeWindow.selected_tagelem;
 
   if (highlighted && type == 'keydown') {
     keyboardNav(direction, highlighted, !event.repeat);
@@ -1065,7 +1065,7 @@ function init() {
     // Workaround for Firefox preserving page state when moving forward
     // and back in history.
     unhighlight($('.highlighted'));
-    if (unsafeWindow.selected_tag) unsafeWindow.toggle_tagmenu(undefined, undefined);
+    if (unsafeWindow.selected_tagname) unsafeWindow.toggle_tagmenu();
 
     if (getPageType() == 'index') {
       sessionStorage.lastIndex = window.location.href;
