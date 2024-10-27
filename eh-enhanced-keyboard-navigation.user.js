@@ -282,7 +282,7 @@ const actions = {
     fn: () => {
       switch (getPageType()) {
         case 'index':
-          click('.searchnav > div:nth-child(3) > a');
+          click('#uprev');
           break;
         case 'gallery':
           click('.ptt td:nth-child(1)');
@@ -298,7 +298,7 @@ const actions = {
     fn: () => {
       switch (getPageType()) {
         case 'index':
-          click('.searchnav > div:nth-last-child(3) > a');
+          click('#unext');
           break;
         case 'gallery':
           click('.ptt td:nth-last-child(1)');
@@ -314,7 +314,7 @@ const actions = {
     fn: () => {
       switch (getPageType()) {
         case 'index':
-          click('.searchnav > div:nth-child(2) > a, .ptt td:nth-child(2)');
+          click('#ufirst');
           break;
         case 'gallery':
           click('.ptt td:nth-child(2)');
@@ -330,7 +330,7 @@ const actions = {
     fn: () => {
       switch (getPageType()) {
         case 'index':
-          click('.searchnav > div:nth-child(5) > a, .ptt td:nth-last-child(2)');
+          click('#ulast');
           break;
         case 'gallery':
           click('.ptt td:nth-last-child(2)');
