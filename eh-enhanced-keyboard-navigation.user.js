@@ -275,8 +275,7 @@ const actions = {
     fn: () => {
       switch (getPageType()) {
         case 'index':
-          click('.searchnav > div:nth-child(3) > a, .ptt td:nth-child(1)');
-          // NOTE: remove '.ptt td:nth-child(1)' in the future
+          click('.searchnav > div:nth-child(3) > a');
           break;
         case 'gallery':
           click('.ptt td:nth-child(1)');
@@ -292,8 +291,7 @@ const actions = {
     fn: () => {
       switch (getPageType()) {
         case 'index':
-          click('.searchnav > div:nth-last-child(3) > a, .ptt td:nth-last-child(1)');
-          // NOTE: remove '.ptt td:nth-last-child(1)' in the future
+          click('.searchnav > div:nth-last-child(3) > a');
           break;
         case 'gallery':
           click('.ptt td:nth-last-child(1)');
@@ -600,8 +598,7 @@ function getPageType() {
 
 function getIndexLayout() {
   // Determine the index layout mode
-  return $('.searchnav  div:last-child option[selected]')?.value || $('#dms option[selected]')?.value;
-  // TODO: #dms selector due to be phased out, remove in the future.
+  return $('.searchnav  div:last-child option[selected]')?.value;
 }
 
 function highlight(selection, setSmooth = true) {
