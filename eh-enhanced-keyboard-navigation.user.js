@@ -679,7 +679,7 @@ function keyboardNav(direction, highlighted, setSmooth) {
   if (highlighted.matches('.gl3t')) highlighted = highlighted.parentElement;
 
   const rect = getRect(highlighted);
-  const originalPos = {x: rect.x, y: rect.y};
+  const originalPos = {x: rect.x, y: rect.y, top: rect.top};
   const margin = 4;  // px
   const pageType = getPageType();
   const pageLayout = getIndexLayout();
@@ -735,10 +735,10 @@ function keyboardNav(direction, highlighted, setSmooth) {
           const current = nodeList.item(index);
           const currentPos = getRect(current);
           const currentDistance = distance(originalPos, currentPos);
-          const currentYDistance = Math.abs(currentPos.y - originalPos.y);
+          const currentYDistance = Math.abs(currentPos.top - originalPos.top);
 
           // Skip same row, and only iterate over elements one row up/down.
-          if (similar(currentPos.y, originalPos.y, margin)) continue;
+          if (similar(currentPos.top, originalPos.top, margin)) continue;
           if (!closestYDistance) closestYDistance = currentYDistance;
           if (currentYDistance > closestYDistance) break;
 
