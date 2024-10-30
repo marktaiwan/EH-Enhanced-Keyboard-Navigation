@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EH Enhanced Keyboard Navigation
 // @description  Configurable shortcuts and enhanced keyboard navigation. "Ctrl+Shift+/" to open settings.
-// @version      1.1.5
+// @version      1.1.6
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -197,7 +197,7 @@ const actions = {
           selector = '.gl3m, .gl3c, .gl1e, .gl3t';
           break;
         case 'gallery':
-          selector = '#gdt > a > div';
+          selector = '#gdt > a > div > div:first-child';
           break;
         default:
           return;
@@ -625,7 +625,7 @@ function highlight(selection, setSmooth = true) {
     if (selection.matches('.gl1t')) selection = $('.gl3t', selection);
 
     if (getPageType() === 'gallery') {
-      selection.parentElement.focus({preventScroll: true});
+      selection.closest('a').focus({preventScroll: true});
     } else {
       $('a', selection).focus({preventScroll: true});
     }
@@ -690,7 +690,7 @@ function keyboardNav(direction, highlighted, setSmooth) {
     selector = TAG_SELECTOR;
   } else if (pageType == 'gallery') {
     // gallery
-    selector = '#gdt > a > div';
+    selector = '#gdt > a > div > div:first-child';
   } else if (pageLayout !== 't') {
     // index: minimal, compact, extended layout
     selector = '.gl3m, .gl3c, .gl1e';
