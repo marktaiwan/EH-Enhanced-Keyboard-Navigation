@@ -867,7 +867,7 @@ function openSettings() {
     }
   }
   function modifierLookup(which) {
-    return ({16: 'shift', 17: 'ctrl', 18: 'alt'}[which]);
+    return ['shift', 'ctrl', 'alt'][which - 16];
   }
   function saveKeybind(input) {
     const key = input.dataset.key;
