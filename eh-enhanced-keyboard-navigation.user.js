@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EH Enhanced Keyboard Navigation
 // @description  Configurable shortcuts and enhanced keyboard navigation. "Ctrl+Shift+/" to open settings.
-// @version      1.1.7
+// @version      1.1.8
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -627,9 +627,9 @@ function highlight(selection, setSmooth = true) {
     if (selection.matches('.gl1t')) selection = $('.gl3t', selection);
 
     if (getPageType() === 'gallery') {
-      selection.closest('a').focus({preventScroll: true});
+      selection.closest('a').focus({preventScroll: true, focusVisible: false});
     } else {
-      $('a', selection).focus({preventScroll: true});
+      $('a', selection).focus({preventScroll: true, focusVisible: false});
     }
     selection.classList.add('highlighted');
 
